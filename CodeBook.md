@@ -1,11 +1,11 @@
-
-#Variables
+ 
+# Variables
 
 feature,activity,subject,x_train,y_train,subject_test,x_test,y_test - To read respective files
 
 mergedata - To merge train and test data
 
-#Functions used for getting and cleaning data
+# Functions used for getting and cleaning data
 
 Identify columns with mean and standard deviation values 
 ---------------------------------------------------------
