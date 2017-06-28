@@ -1,21 +1,20 @@
 #Clear the memory
 rm(list=ls())
-#Set Working Directory
-setwd('C:\\UCI HAR Dataset')
-#Read the files
 
-#library(dplyr)
-feature<- read.table('./features.txt',header=FALSE)
+#Read the files
+hfeature<- read.table('./features.txt',header=FALSE)
 activity<-read.table('./activity_labels.txt',header=FALSE)
 subject <-read.table('./train/subject_train.txt',header=FALSE)
 x_train <- read.table('./train/x_train.txt',header=FALSE)
 y_train<- read.table('./train/y_train.txt',header=FALSE)
+
 #Assign column names
 colnames(activity)  <-c('activityId','activityType')
 colnames(subject)  <-"subjectId"
 colnames(x_train) <-feature[,2] 
-colnames(y_train) <- "activityId"
+Ccolnames(y_train) <- "activityId"
 train_data<-cbind(y_train,subject,x_train)
+
 #read subject_test.txt
 subject_test <-read.table('./test/subject_test.txt',header=FALSE)
 #read x_test.txt
@@ -38,7 +37,7 @@ names(mergedata)[1]<-"subjectId"
 names(mergedata)[2]<-"activityId"
 
 colNames <- colnames(mergedata)
-
+# Change column names
 for (i in 1:length(colNames)) 
   
 {
@@ -73,6 +72,7 @@ colnames(mergedata)<- colNames
 # Find aggregates
 mergedata <- aggregate(mergedata[,names(mergedata) != 'activityId' & names(mergedata) != 'subjectId'],by=list(activityId=mergedata$activityId,subjectId = mergedata$subjectId),mean)
 finalData<- merge(x= mergedata, y= activity,by="activityId" , all.x=TRUE)
+#Write dataset to text file
 write.table(finalData, './tidydata.txt',row.name=FALSE,sep='\t')
 
 
