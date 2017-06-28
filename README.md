@@ -1,9 +1,21 @@
-# Cleaningdata
-# Clear the memory
+# Getting and Cleaning data
+
+Purpose:-
+The purpose of this project is to collect, work with, and clean the  data set https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
+
+Steps:-
+
+1.Merges the training and the test sets to create one data set.
+2.Extracts only the measurements on the mean and standard deviation for each measurement. 
+3.Uses descriptive activity names to name the activities in the data set
+4.Appropriately labels the data set with descriptive variable names. 
+5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+
+#Clear the memory
 -----------------
 rm(list=ls())
 
-# Read the files
+#Read the files
 ---------------
 feature<- read.table('./features.txt',header=FALSE)
 activity<-read.table('./activity_labels.txt',header=FALSE)
@@ -13,7 +25,7 @@ y_train<- read.table('./train/y_train.txt',header=FALSE)
 subject_test <-read.table('./test/subject_test.txt',header=FALSE)
 x_test       <-read.table('./test/X_test.txt',header=FALSE) 
 y_test       <- read.table('./test/y_test.txt',header=FALSE)
-# Assign column names
+#Assign column names
 ----------------------
 
 colnames(activity)  <-c('activityId','activityType')
@@ -26,7 +38,7 @@ colnames(x_test)       <- feature[,2]
 colnames(y_test)       <- "activityId"
 test_data <- cbind(y_test,subject_test,x_test)
 
-# Merge train and test data
+#Merge train and test data
 ---------------------------
 mergedata <- rbind(train_data,test_data)
 
@@ -68,10 +80,11 @@ for (i in 1:length(colNames))
 };
 colnames(mergedata)<- colNames
 
-# Find aggregates
+#Find aggregates
 ------------------
 mergedata <- aggregate(mergedata[,names(mergedata) != 'activityId' & names(mergedata) != 'subjectId'],by=list(activityId=mergedata$activityId,subjectId = mergedata$subjectId),mean)
 finalData<- merge(x= mergedata, y= activity,by="activityId" , all.x=TRUE)
-# Write results to tidydata.txt
+
+#Write results to tidydata.txt
 -------------------------------
 write.table(finalData, './tidydata.txt',row.name=FALSE,sep='\t')
