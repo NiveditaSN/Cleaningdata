@@ -1,3 +1,4 @@
+
 # Getting and Cleaning data
 
 Purpose:-
@@ -21,6 +22,7 @@ rm(list=ls())
 
 #Read the files
 ---------------
+
 feature<- read.table('./features.txt',header=FALSE)
 activity<-read.table('./activity_labels.txt',header=FALSE)
 subject <-read.table('./train/subject_train.txt',header=FALSE)
@@ -29,6 +31,7 @@ y_train<- read.table('./train/y_train.txt',header=FALSE)
 subject_test <-read.table('./test/subject_test.txt',header=FALSE)
 x_test       <-read.table('./test/X_test.txt',header=FALSE) 
 y_test       <- read.table('./test/y_test.txt',header=FALSE)
+
 #Assign column names
 ----------------------
 
