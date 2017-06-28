@@ -2,11 +2,14 @@
 rm(list=ls())
 
 #Read the files
-hfeature<- read.table('./features.txt',header=FALSE)
+feature<- read.table('./features.txt',header=FALSE)
 activity<-read.table('./activity_labels.txt',header=FALSE)
 subject <-read.table('./train/subject_train.txt',header=FALSE)
-x_train <- read.table('./train/x_train.txt',header=FALSE)
+x_train <- read.table('./train/X_train.txt',header=FALSE)
 y_train<- read.table('./train/y_train.txt',header=FALSE)
+subject_test <-read.table('./test/subject_test.txt',header=FALSE)
+x_test       <-read.table('./test/X_test.txt',header=FALSE) 
+y_test       <- read.table('./test/y_test.txt',header=FALSE)
 
 #Assign column names
 colnames(activity)  <-c('activityId','activityType')
@@ -14,20 +17,11 @@ colnames(subject)  <-"subjectId"
 colnames(x_train) <-feature[,2] 
 Ccolnames(y_train) <- "activityId"
 train_data<-cbind(y_train,subject,x_train)
-
-#read subject_test.txt
-subject_test <-read.table('./test/subject_test.txt',header=FALSE)
-#read x_test.txt
-x_test       <-read.table('./test/X_test.txt',header=FALSE) 
-#read y_test.txt
-y_test       <- read.table('./test/y_test.txt',header=FALSE)
-
 colnames(subject_test) <- "subjectId"
-
 colnames(x_test)       <- feature[,2] 
-
 colnames(y_test)       <- "activityId"
 test_data <- cbind(y_test,subject_test,x_test)
+
 #Merge training and test data
 mergedata <- rbind(train_data,test_data)
 
