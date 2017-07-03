@@ -1,4 +1,4 @@
-#Clear the memory
+Clear the memory
 rm(list=ls())
 
 #Read the files
@@ -13,7 +13,7 @@ x_test       <-read.table('./test/X_test.txt',header=FALSE)
 y_test       <- read.table('./test/y_test.txt',header=FALSE)
 
 #Assign column names
-colnames(activity)  <-c('activityId','activityType')
+colnames(activity)  <-c('activityId','Activity')
 colnames(subject)  <-"subjectId"
 colnames(x_train) <-feature[,2] 
 colnames(y_train) <- "activityId"
@@ -41,7 +41,7 @@ for (i in 1:length(colNames))
   
   colNames[i] = gsub("\\()","",colNames[i])
   
-  colNames[i]<- gsub("activityType","Activity",colNames[i])
+
   colNames[i] = gsub("std","StdDev",colNames[i])
   
   colNames[i] = gsub("mean","Mean",colNames[i])
