@@ -23,7 +23,11 @@ The purpose of this project is to collect, work with, and clean the  data set ht
 
 Download and extract the file https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip to the working directory.
 
-Execute the run_analysis.r file. The train and test data is merged and cleaned. The tidy dataset is written on to tidydata.txt file.
+Download run_analysis.r file to the UCI HAR Dataset folder.
+
+Execute the run_analysis.r file. 
+
+  The train and test data is merged and cleaned. The tidy dataset is written on to tidydata.txt file.
 
   ## Results:-
 
