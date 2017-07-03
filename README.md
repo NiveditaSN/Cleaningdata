@@ -16,4 +16,6 @@ Steps:-
 
 5.From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
+Results:-
 
+Creates the output file tidydata.txt in the working folder.
